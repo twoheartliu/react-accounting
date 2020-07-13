@@ -5,64 +5,32 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import styled from 'styled-components';
-import Nav from 'components/Nav';
+import Money from './views/Money';
+import Statistics from './views/Statistics';
+import Tags from './views/Tags';
+import NotFound from './views/NotFound';
 
-const Wrapper = styled.div`
-  display: flex;
-  height: 100vh;
-  flex-flow: column nowrap;
-`;
-
-const Main = styled.div`
-  flex-grow: 1;
-  overflow: auto;
-`;
 
 function App() {
   return (
     <Router>
-      <Wrapper>
-        <Main>
-          <Switch>
-            <Route path="/tags">
-              <Tags/>
-            </Route>
-            <Route path="/money">
-              <Money/>
-            </Route>
-            <Route path="/statistics">
-              <Statistics/>
-            </Route>
-            {/*<Route exact path="/">*/}
-            {/*  <Money />*/}
-            {/*</Route>*/}
-            <Redirect exact from='/' to='/money'/>
-            <Route path="*">
-              <NotFound/>
-            </Route>
-          </Switch>
-        </Main>
-        <Nav/>
-      </Wrapper>
+      <Switch>
+        <Route path="/tags">
+          <Tags/>
+        </Route>
+        <Route path="/money">
+          <Money/>
+        </Route>
+        <Route path="/statistics">
+          <Statistics />
+        </Route>
+        <Redirect exact from='/' to='/money'/>
+        <Route path="*">
+          <NotFound />
+        </Route>
+      </Switch>
     </Router>
   );
 }
 
 export default App;
-
-function Statistics() {
-  return <h2>Statistics</h2>;
-}
-
-function Tags() {
-  return <h2>Tags</h2>;
-}
-
-function Money() {
-  return <h2>Money</h2>;
-}
-
-function NotFound() {
-  return <h2>NOT FOUND</h2>;
-}
