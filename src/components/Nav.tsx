@@ -19,15 +19,17 @@ const NavWrapper = styled.nav`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: #999999;
         &.selected {
-          color: red;
+          color: #333333;
           .icon {
-            fill: red;
+            fill: #333333;
           }
         }
         .icon {
           width: 24px;
           height: 24px;
+          fill: #999999;
         }
       }      
     }
