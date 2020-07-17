@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Layout from '../components/Layout';
 import styled from 'styled-components';
 import {TagsSection} from './Money/TagsSection';
@@ -12,13 +12,57 @@ const MyLayout = styled(Layout)`
   flex-direction: column;
 `;
 
+type Category = '-' | '+';
 const Money = () => {
+  const [selected, setSelected] = useState({
+    tags: [] as string[],
+    note: '',
+    category: '-' as Category,
+    amount: 0
+  });
   return (
     <MyLayout>
-      <TagsSection/>
-      <NoteSection/>
-      <CategorySection/>
-      <NumberPadSection/>
+      {selected.tags.join(',')}
+      <hr/>
+      {selected.note}
+      <hr/>
+      {selected.category}
+      <TagsSection
+        value={selected.tags}
+        onChange={(tags) => {
+          setSelected({
+            ...selected,
+            tags
+          });
+        }}
+      />
+      <NoteSection
+        value={selected.note}
+        onChange={(note) => {
+          setSelected({
+            ...selected,
+            note
+          });
+        }}/>
+      <CategorySection
+        value={selected.category}
+        onChange={(category) => {
+          setSelected({
+            ...selected,
+            category
+          });
+        }}/>
+      <NumberPadSection
+        value={selected.amount}
+        onChange={(amount) => {
+          setSelected({
+            ...selected,
+            amount
+          });
+        }}
+        onOk={() => {
+        }}
+      />
     </MyLayout>
   );
 };
