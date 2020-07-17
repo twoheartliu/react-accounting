@@ -19,7 +19,8 @@ const Wrapper = styled.section`
       font-size: 14px;
       margin: 8px 12px;
       &.selected {
-        background: #f60;
+        background: #333333;
+        color: #fff;
       }
     }
   }
