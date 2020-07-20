@@ -42,10 +42,10 @@ const Tags = () => {
   return (
     <Layout>
       <TagList>
-        {tags.map(item => {
-          return <li key={item}>
-            <Link to={'/tags/' + item}>
-              <span className="oneLine">{item}</span>
+        {tags.map(tag => {
+          return <li key={tag.id}>
+            <Link to={'/tags/' + tag.id}>
+              <span className="oneLine">{tag.name}</span>
               <Icon name='right'/>
             </Link>
           </li>;

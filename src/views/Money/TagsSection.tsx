@@ -36,38 +36,38 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  value: string[];
-  onChange: (selected: string[]) => void;
+  value: number[];
+  onChange: (selected: number[]) => void;
 }
 const TagsSection: React.FC<Props> = (props) => {
   const {tags, setTags} = useTags();
-  const selectedTags = props.value;
+  const selectedTagIds = props.value;
   const onAddTag = () => {
     const tagName = window.prompt('请输入要添加的标签');
     if (tagName !== null) {
-      setTags([...tags, tagName]);
+      setTags([...tags, {id: Math.random(), name: tagName}]);
     }
   };
 
-  const onToggleTag = (item: string) => {
-    if (selectedTags.includes(item)) {
-      const left = selectedTags.filter(t => t !== item);
+  const onToggleTag = (tagId: number) => {
+    if (selectedTagIds.includes(tagId)) {
+      const left = selectedTagIds.filter(t => t !== tagId);
       props.onChange(left);
     } else {
-      props.onChange([...selectedTags, item]);
+      props.onChange([...selectedTagIds, tagId]);
     }
   };
 
   return <Wrapper>
     <ol>
       {
-        tags.map((item) => {
+        tags.map((tag) => {
           return <li
-            key={item}
-            onClick={() => onToggleTag(item)}
-            className={selectedTags.includes(item) ? 'selected' : ''}
+            key={tag.id}
+            onClick={() => onToggleTag(tag.id)}
+            className={selectedTagIds.includes(tag.id) ? 'selected' : ''}
           >
-            {item}
+            {tag.name}
           </li>;
         })
       }
