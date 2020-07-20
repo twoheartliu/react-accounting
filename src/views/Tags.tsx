@@ -42,6 +42,7 @@ const Tags = () => {
   return (
     <Layout>
       <TagList>
+
         {tags.map(tag => {
           return <li key={tag.id}>
             <Link to={'/tags/' + tag.id}>
