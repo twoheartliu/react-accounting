@@ -1,9 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Layout from '../components/Layout';
+import {useTags} from '../useTags';
 
 const Tags = () => {
+  const {tags, setTags} = useTags();
   return (
-    <Layout><h2>Tags</h2></Layout>
+    <Layout>
+      <ul>
+        {tags.map(item => {
+          return <li key={item}>{item}</li>;
+        })}
+      </ul>
+    </Layout>
   );
 };
 
