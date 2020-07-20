@@ -29,11 +29,6 @@ const Money = () => {
   };
   return (
     <MyLayout>
-      {selected.tags.join(',')}
-      <hr/>
-      {selected.note}
-      <hr/>
-      {selected.category}
       <TagsSection
         value={selected.tags}
         onChange={(tags) => onChange({tags})}
