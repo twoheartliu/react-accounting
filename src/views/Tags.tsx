@@ -5,9 +5,12 @@ import styled from 'styled-components';
 import Icon from '../components/Icon';
 import {Link} from 'react-router-dom';
 import {Button} from '../components/Button';
+import {Center} from '../components/Center';
+import {Space} from '../components/Space';
 
 const TagList = styled.ol`
   font-size: 16px;
+  background: #fff;
   > li {
     border-bottom: 1px solid #BCBBC1;
     line-height: 20px;
@@ -20,22 +23,12 @@ const TagList = styled.ol`
     }
   }
 `;
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-const Space = styled.div`
-  height: 16px;
-`;
 
 const Tags = () => {
   const {tags} = useTags();
   return (
     <Layout>
       <TagList>
-
         {tags.map(tag => {
           return <li key={tag.id}>
             <Link to={'/tags/' + tag.id}>

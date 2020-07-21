@@ -5,6 +5,9 @@ import Layout from '../components/Layout';
 import Icon from '../components/Icon';
 import {Button} from '../components/Button';
 import styled from 'styled-components';
+import {Input} from '../components/Input';
+import {Center} from '../components/Center';
+import {Space} from '../components/Space';
 
 type Params = {
   id: string;
@@ -14,8 +17,13 @@ const TopBar = styled.header`
   justify-content: space-between;
   align-items: center;
   line-height: 20px;
-  padding: 14px 0;
+  padding: 14px;
   background: #fff;
+`
+const InputWrapper = styled.div`
+  background:#fff;
+  margin-top: 8px;
+  padding: 0 16px;
 `
 const Tag: React.FC = () => {
   const {findTag} = useTags();
@@ -28,13 +36,20 @@ const Tag: React.FC = () => {
         <span>编辑标签</span>
         <Icon />
       </TopBar>
-      <div>
-        <label>
-          <span>标签名</span>
-          <input type="text" placeholder="在这里添加备注" defaultValue={tag.name}/>
-        </label>
-      </div>
-      <Button>删除标签</Button>
+      <InputWrapper>
+        <Input
+          label='标签名'
+          defaultValue={tag.name}
+          placeholder='请输入标签名称'
+          type='text'
+        />
+      </InputWrapper>
+      <Center>
+        <Space />
+        <Space />
+        <Space />
+        <Button>删除标签</Button>
+      </Center>
     </Layout>
   </div>;
 };
