@@ -26,9 +26,33 @@ const InputWrapper = styled.div`
   padding: 0 16px;
 `
 const Tag: React.FC = () => {
-  const {findTag, updateTag} = useTags();
+  const {findTag, updateTag, deleteTag} = useTags();
   let {id:idString} = useParams<Params>();
   const tag = findTag(parseInt(idString));
+  const tagContent = () => {
+    return (
+      <div>
+        <InputWrapper>
+          <Input
+            label='标签名'
+            value={tag.name}
+            placeholder='请输入标签名称'
+            onChange={(e) => {
+              const nowTagName = e.target.value;
+              updateTag(tag.id, {name: nowTagName})
+            }}
+            type='text'
+          />
+        </InputWrapper>
+        <Center>
+          <Space />
+          <Space />
+          <Space />
+          <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+        </Center>
+      </div>
+    )
+  }
   return <div>
     <Layout>
       <TopBar>
@@ -36,24 +60,7 @@ const Tag: React.FC = () => {
         <span>编辑标签</span>
         <Icon />
       </TopBar>
-      <InputWrapper>
-        <Input
-          label='标签名'
-          value={tag.name}
-          placeholder='请输入标签名称'
-          onChange={(e) => {
-            const nowTagName = e.target.value;
-            updateTag(tag.id, {name: nowTagName})
-          }}
-          type='text'
-        />
-      </InputWrapper>
-      <Center>
-        <Space />
-        <Space />
-        <Space />
-        <Button>删除标签</Button>
-      </Center>
+      {tag ? tagContent() : <Center>tag 不存在</Center>}
     </Layout>
   </div>;
 };
