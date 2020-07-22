@@ -1,13 +1,15 @@
-@import-normalize;
+@import-normalize ;
 @import "helper";
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   &::before, &::after {
     box-sizing: border-box;
   }
 }
+
 ul, ol {
   list-style: none;
 }
@@ -24,12 +26,14 @@ body {
   background: #F5F5F5;
 }
 
-button {
-  font-family: inherit;
+button, input {
+  font: inherit;
 }
+
 :focus {
   outline: none;
 }
+
 .icon {
   width: 1em;
   height: 1em;
