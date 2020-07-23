@@ -5,6 +5,7 @@ import {TagsSection} from './Money/TagsSection';
 import {NoteSection} from './Money/NoteSection';
 import {CategorySection} from './Money/CategorySection';
 import {NumberPadSection} from './Money/NumberPadSection';
+import {useRecords} from '../hooks/useRecords';
 
 
 const MyLayout = styled(Layout)`
@@ -18,8 +19,10 @@ const Money = () => {
     tagIds: [] as number[],
     note: '',
     category: '-' as Category,
-    amount: '0'
+    amount: 0
   });
+  const {records, addRecord}= useRecords();
+  console.log(records);
   //Partial 类型是父类型的一部分
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
@@ -27,8 +30,12 @@ const Money = () => {
       ...obj
     });
   };
+  const submit = () => {
+    addRecord(selected);
+  }
   return (
     <MyLayout>
+      {JSON.stringify(selected)}
       <TagsSection
         value={selected.tagIds}
         onChange={(tagIds) => onChange({tagIds})}
@@ -42,8 +49,7 @@ const Money = () => {
       <NumberPadSection
         value={selected.amount}
         onChange={(amount) => onChange({amount})}
-        onOk={() => {
-        }}
+        onOk={submit}
       />
     </MyLayout>
   );
