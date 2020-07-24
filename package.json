@@ -95,6 +95,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.0",
     "@types/webpack-env": "^1.15.2",
+    "dayjs": "^1.8.30",
     "svg-sprite-loader": "^5.0.0",
     "svgo-loader": "^2.2.1"
   },
