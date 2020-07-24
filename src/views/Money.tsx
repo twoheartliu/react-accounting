@@ -20,11 +20,10 @@ const defaultFormData = {
   note: '',
   category: '-' as Category,
   amount: 0
-}
+};
 const Money = () => {
   const [selected, setSelected] = useState(defaultFormData);
-  const {records, addRecord}= useRecords();
-  console.log(records);
+  const {addRecord} = useRecords();
   //Partial 类型是父类型的一部分
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
@@ -33,13 +32,14 @@ const Money = () => {
     });
   };
   const submit = () => {
-    addRecord(selected);
-    alert('保存成功')
-    setSelected(defaultFormData)
-  }
+    const res = addRecord(selected);
+    if (res) {
+      alert('保存成功');
+    }
+    setSelected(defaultFormData);
+  };
   return (
     <MyLayout>
-      {JSON.stringify(selected)}
       <TagsSection
         value={selected.tagIds}
         onChange={(tagIds) => onChange({tagIds})}
