@@ -21,12 +21,14 @@ const Item = styled.div`
     margin-left: 16px;
     color:#999;
   }
-`
+`;
 
 const Statistics = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const {records} = useRecords();
   const {getName} = useTags();
+  const selectedRecords = records.filter(r => r.category === category);
+
   return (
     <Layout>
       <CategoryWrapper>
@@ -35,7 +37,7 @@ const Statistics = () => {
           onChange={(value) => setCategory(value)}/>
       </CategoryWrapper>
       {
-        records.map((r, index) => {
+        selectedRecords.map((r, index) => {
           return (
             <Item key={index}>
               <div className="tags">
