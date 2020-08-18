@@ -2,6 +2,7 @@
   "name": "money-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://twoheartliu.github.io/react-accunting-website/",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
