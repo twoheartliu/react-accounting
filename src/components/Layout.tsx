@@ -11,17 +11,23 @@ const Wrapper = styled.div`
 const Main = styled.div`
   flex-grow: 1;
   overflow: auto;
+  &::-webkit-scrollbar{
+    display:none;
+    }
+  scrollbar-width: none;
 `;
 
 type Props = {
   className?: string;
   scrollTop?: number;
 }
-const Layout:React.FC<Props> = (props) => {
+const Layout: React.FC<Props> = (props) => {
   const mainRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     setTimeout(() => {
-      if (!mainRef.current) {return;}
+      if (!mainRef.current) {
+        return;
+      }
       mainRef.current.scrollTop = props.scrollTop!;
     }, 0);
   }, [props.scrollTop]);
@@ -35,5 +41,5 @@ const Layout:React.FC<Props> = (props) => {
 
 Layout.defaultProps = {
   scrollTop: 0
-}
+};
 export default Layout;
