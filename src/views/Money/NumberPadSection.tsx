@@ -11,7 +11,6 @@ const NumberPadSection: React.FC<Props> = (props) => {
   // const output = props.value.toString();
   const [output, setOutput] = useState(props.value.toString());
   // const [output, _setOutput] = useState('0');
-  console.log(output);
   const settingOutput = (output: string) => {
     let newOutput: string;
     if (output.length >= 16) {

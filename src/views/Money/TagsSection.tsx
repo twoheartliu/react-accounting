@@ -10,15 +10,21 @@ const Wrapper = styled.section`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
+  
   > ol {
     margin: 0 -12px;
     > li {
+      max-width: calc(100vw - 12px - 16px);
       background: #D9D9D9;
       border-radius: 18px;
       display: inline-block;
       padding: 3px 16px;
       font-size: 14px;
-      margin: 8px 12px;
+      margin: 8px 12px;    
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      
       &.selected {
         background: #333333;
         color: #fff;
